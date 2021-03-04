@@ -42,5 +42,4 @@ fun Home(onPandaItemClick: (panda: Panda) -> Unit) {
             onPandaItemClick(panda)
         }
     }
-
 }
