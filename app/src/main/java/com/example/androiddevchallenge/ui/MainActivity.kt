@@ -15,30 +15,36 @@
  */
 package com.example.androiddevchallenge.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androiddevchallenge.ui.ui.Home
 import com.example.androiddevchallenge.ui.ui.theme.MyTheme
 
+const val PANDA = "panda"
+
+/**
+ * @classDescription:  描述：列表页
+ * @author:  LiuChaoya
+ * @createTime:  2021/3/4 10:07.
+ * @email:  1090969255@qq.com
+ */
 class MainActivity : AppCompatActivity() {
-    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                Home()
+                Home { panda ->
+                    run {
+                        val intent = Intent(this, PandaDetailActivity::class.java)
+                        intent.putExtra(PANDA, panda)
+                        startActivity(intent)
+                    }
+                }
             }
         }
     }
 
-    override fun onBackPressed() {
-        if (viewModel.currentPanda != null) {
-            viewModel.closePanda()
-        } else {
-            super.onBackPressed()
-        }
-    }
 }

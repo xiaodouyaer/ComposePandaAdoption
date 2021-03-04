@@ -15,13 +15,16 @@
  */
 package com.example.androiddevchallenge.ui.data
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
+import kotlinx.parcelize.Parcelize
 
-data class Panda(
+@Parcelize
+class Panda(
     val name: String,
     val location: String,
     val age: String,
     val gender: String,
     val introduction: String,
     @DrawableRes val picture: Int,
-)
+) : Parcelable

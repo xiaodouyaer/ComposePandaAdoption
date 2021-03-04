@@ -36,20 +36,21 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.data.Panda
 import com.example.androiddevchallenge.ui.ui.theme.buttonBg
+import com.example.androiddevchallenge.ui.ui.theme.purple50
 
 @Composable
 fun PandaDetails(panda: Panda, onAdopt: (Panda) -> Unit = {}) {
     Column(
         Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.secondary)
+            .background(purple50)
             .verticalScroll(rememberScrollState())
     ) {
         Box {
             Image(
                 painterResource(panda.picture),
                 "Panda picture: ${panda.name}",
-                Modifier.aspectRatio(1f),
+                Modifier.aspectRatio(1.5f),
                 contentScale = ContentScale.Crop
             )
             Button(

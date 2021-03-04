@@ -22,6 +22,12 @@ import androidx.lifecycle.ViewModel
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.data.Panda
 
+/**
+ * @classDescription:  描述：数据实体
+ * @author:  LiuChaoya
+ * @createTime:  2021/3/4 10:05.
+ * @email:  1090969255@qq.com
+ */
 class MainViewModel : ViewModel() {
     val pandas by mutableStateOf(
         listOf(
@@ -90,10 +96,6 @@ class MainViewModel : ViewModel() {
     )
 
     var currentPanda: Panda? by mutableStateOf(null)
-
-    fun showPanda(panda: Panda) {
-        currentPanda = panda
-    }
 
     fun closePanda() {
         currentPanda = null

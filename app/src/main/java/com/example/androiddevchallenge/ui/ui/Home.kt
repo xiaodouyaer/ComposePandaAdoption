@@ -15,19 +15,19 @@
  */
 package com.example.androiddevchallenge.ui.ui
 
-import androidx.compose.material.*
+import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.MainViewModel
-import kotlinx.coroutines.launch
+import com.example.androiddevchallenge.ui.data.Panda
 
 @Composable
-fun Home() {
-    val snackbarHostState = SnackbarHostState()
-    val coroutineScope = rememberCoroutineScope()
+fun Home(onPandaItemClick:(panda: Panda) -> Unit) {
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -35,22 +35,12 @@ fun Home() {
                     Text(stringResource(R.string.app_name))
                 }
             )
-        },
-        snackbarHost = {
-            SnackbarHost(snackbarHostState)
         }
     ) {
         val viewModel: MainViewModel = viewModel()
         PandaList(viewModel.pandas) { panda ->
-            viewModel.showPanda(panda)
-        }
-        val panda = viewModel.currentPanda
-        if (panda != null) {
-            PandaDetails(panda) {
-                coroutineScope.launch {
-                    snackbarHostState.showSnackbar("谢谢您，您已成功领养${panda.name}(Thanks.You have adopted ${panda.name})")
-                }
-            }
+            onPandaItemClick(panda)
         }
     }
+
 }
