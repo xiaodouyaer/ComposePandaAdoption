@@ -16,8 +16,8 @@
 package com.example.androiddevchallenge.ui.ui
 
 import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,7 +26,7 @@ import com.example.androiddevchallenge.ui.MainViewModel
 import com.example.androiddevchallenge.ui.data.Panda
 
 @Composable
-fun Home(onPandaItemClick:(panda: Panda) -> Unit) {
+fun Home(onPandaItemClick: (panda: Panda) -> Unit) {
 
     Scaffold(
         topBar = {
