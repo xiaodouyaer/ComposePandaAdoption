@@ -20,16 +20,11 @@ import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.Text
 import androidx.compose.material.IconButton
-import androidx.compose.material.Icon
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
@@ -48,13 +43,11 @@ class PandaDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val panda = intent.getParcelableExtra<Panda>(PANDA)
-
         if (panda == null) {
             Toast.makeText(this, "对不起,数据获取失败啦(Sorry,data obtain fail)", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
-
         setContent {
             Scaffold(
                 topBar = {
@@ -67,7 +60,6 @@ class PandaDetailActivity : AppCompatActivity() {
                         },
                         backgroundColor = purple500, elevation = 0.dp,
                         navigationIcon = {
-
                             IconButton(onClick = { finish() }) {
                                 Image(
                                     painterResource(R.drawable.ic_back),
